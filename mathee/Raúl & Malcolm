@@ -1,6 +1,7 @@
-///aus functions.py
-
+---------------------------------------------------------------------------------------------------------------------------------
+///R&M functions.py
 from utility import *
+from Brüche import *
 
 @maindeco
 def main_menue():
@@ -48,3 +49,12 @@ def bruchgame_menue():
     number.display()
     
     message_display('Training - Brüche', display_width*0.5, display_width*0.15, 58 )
+    
+    spiel-brueche()
+    
+---------------------------------------------------------------------------------------------------------------------------------
+///R&M brüche.py
+
+
+
+def spiel-brueche():
