@@ -1,4 +1,5 @@
 from initialise import *
+from random import *
 
 def text_objects(text, font):
     textSurface = font.render(text, True, black)
@@ -69,7 +70,7 @@ def button(x,y,w,h, text, func = lambda : None, size = 30):
     if x+w > mouse[0] > x and y+h > mouse[1] > y:
         pig.draw.rect(gameDisplay, black,(x,y,w,h))
         
-        #wenn gedrückt
+        #wenn gedruckt
         
         for event in event_queue.events:
             if event.type == pig.MOUSEBUTTONDOWN:
@@ -106,4 +107,68 @@ def maindeco(func):
             
             clock.tick(30)
     return structure
+
+
+def spiel_bruch():
+    
+    r = randint(1, 3)
+
+    Nenner1=randint(1, 20)
+    Zahler1=randint(1, 20)
+    Nenner2=randint(1, 20)
+
+    Zahler2=randint(1, 20)
+    NeuerZahler1 = Zahler1 * Nenner2
+    NeuerZahler2 = Zahler2 * Nenner1
+    NeuerNenner1 = Nenner1 * Nenner2
+
+    if r == 1:
+      op = "+"
+      z3=NeuerZahler1+NeuerZahler2
+      n3=NeuerNenner1
+     
+    elif r == 2:
+      op = "-"
+      z3=NeuerZahler1-NeuerZahler2
+      n3=NeuerNenner1 
+      
+    elif r == 3:
+      op = "*"
+      z3=Zahler1*Zahler2
+      n3=Nenner1*Nenner2
+      
+    if z3 == 0:
+        z3 = 0
+        n3 = 1
+  
+    else:
+      for x in range(400,1,-1):
+        if (z3 % x == 0) and (n3 % x == 0):
+          z3 = z3/x
+          n3 = n3/x
+          break
+
+    message_display(str(Zahler1), 180, 300, 40 )
+    message_display('-----------', 180, 325, 25 )
+    message_display(str(Nenner1), 180, 350, 40 )
+    
+    message_display(str(op), 305, 325 , 40 )
+    
+    message_display(str(Zahler2),430 , 300, 40 )
+    message_display('-----------',430, 325, 25 )
+    message_display(str(Nenner2), 430, 350, 40 )
+    
+    message_display('=', 550, 325, 40 )
+    
+    message_display(str(z3), 620, 300, 40 )
+    message_display('-----------',620, 325, 25 )
+    message_display(str(n3), 620, 350, 40 )
+    
+
+
+
+
+
+
+
 
